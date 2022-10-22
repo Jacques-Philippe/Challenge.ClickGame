@@ -22,19 +22,41 @@ namespace Game
 
         private Rigidbody rigidbody;
 
+        private GameManager gameManager;
+
         private const float UPWARD_FORCE_MAX = 14;
         private const float UPWARD_FORCE_MIN = 8;
+
+        public bool IsGoodItem
+        {
+            get => points > 0;
+        }
 
 
         private void Awake()
         {
             this.scoreManager = FindObjectOfType<ScoreManager>();
             this.rigidbody = GetComponent<Rigidbody>();
+            this.gameManager= GetComponent<GameManager>();
         }
 
         private void Start()
         {
             this.ShootUpward();
+        }
+
+        private void Update()
+        {
+            //Destroy the object when it falls below the horizon
+            var currentHeight = this.transform.position.y;
+            if (currentHeight <= -5.0)
+            {
+                if (this.IsGoodItem && !gameManager.IsGameOver)
+                {
+                    gameManager.EndGame();
+                }
+                GameObject.Destroy(this.gameObject);
+            }
         }
 
         private void OnMouseDown()

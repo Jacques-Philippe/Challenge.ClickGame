@@ -18,6 +18,7 @@ namespace Game
         /// </summary>
         private GameManager gameManager;
 
+
         /// <summary>
         /// The delay before the next enemy is spawned
         /// </summary>
@@ -54,11 +55,6 @@ namespace Game
             StartCoroutine(DelayedSpawn());
         }
 
-        //private void Update()
-        //{
-        //    if (Input.GetKeyDown(KeyCode.Space)) Spawn();
-        //}
-
         private void StopSpawning()
         {
             this.shouldStopSpawning = true;
@@ -81,7 +77,10 @@ namespace Game
             var prefab = this.itemPrefabs[index];
             float x = Random.Range(X_MIN, X_MAX);
             Vector3 position = new Vector3(x, Y, Z);
-            GameObject.Instantiate(prefab, position, new Quaternion());
+            var gameobj = GameObject.Instantiate(prefab, position, new Quaternion());
+            Vector3 cameraPosition = Camera.main.transform.position;
+
+            gameobj.transform.LookAt(cameraPosition);
         }
 
 
