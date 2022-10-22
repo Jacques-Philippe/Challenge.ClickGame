@@ -35,11 +35,11 @@ namespace Game
         /// <summary>
         /// The Z value an item should be spawned at
         /// </summary>
-        private const float Z = -3.46f;
+        private const float Z = -2.5f;
         /// <summary>
         /// The Y value an item should be spawned at
         /// </summary>
-        private const float Y = -5.0f;
+        private const float Y = -4.0f;
 
         private bool shouldStopSpawning = false;
 
@@ -51,13 +51,13 @@ namespace Game
 
         private void Start()
         {
-            //StartCoroutine(Spawn());
+            StartCoroutine(DelayedSpawn());
         }
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Space)) Spawn();
-        }
+        //private void Update()
+        //{
+        //    if (Input.GetKeyDown(KeyCode.Space)) Spawn();
+        //}
 
         private void StopSpawning()
         {

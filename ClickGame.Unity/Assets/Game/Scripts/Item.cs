@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace Game
 {
+    [RequireComponent(typeof(Collider))]
     [RequireComponent(typeof(Rigidbody))]
     public class Item : MonoBehaviour
     {
