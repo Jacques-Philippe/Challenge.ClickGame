@@ -51,7 +51,12 @@ namespace Game
 
         private void Start()
         {
-            StartCoroutine(Spawn());
+            //StartCoroutine(Spawn());
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Space)) Spawn();
         }
 
         private void StopSpawning()
@@ -59,19 +64,26 @@ namespace Game
             this.shouldStopSpawning = true;
         }
 
-        private IEnumerator Spawn()
+        private IEnumerator DelayedSpawn()
         {
             yield return new WaitForSeconds(this.spawnDelay);
+            this.Spawn();
+            if (!shouldStopSpawning)
+            {
+                yield return DelayedSpawn();
+            }
+            yield return null;
+        }
+
+        private void Spawn()
+        {
             int index = Random.Range(0, this.itemPrefabs.Count);
             var prefab = this.itemPrefabs[index];
             float x = Random.Range(X_MIN, X_MAX);
             Vector3 position = new Vector3(x, Y, Z);
             GameObject.Instantiate(prefab, position, new Quaternion());
-            if (!shouldStopSpawning)
-            {
-                yield return Spawn();
-            }
-            yield return null;
         }
+
+
     }
 }

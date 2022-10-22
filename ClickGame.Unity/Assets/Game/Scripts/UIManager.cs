@@ -13,6 +13,9 @@ namespace Game
         private GameObject gameOverUI;
 
         private GameManager gameManager;
+
+        private ScoreManager scoreManager;
+        private UpdatePlayerScore updatePlayerScore;
         private void Awake()
         {
             this.gameManager = FindObjectOfType<GameManager>();
