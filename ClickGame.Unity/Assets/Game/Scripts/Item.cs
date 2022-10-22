@@ -42,7 +42,12 @@ namespace Game
             //Debug.Log("OnMouseDown");
             this.scoreManager.AddToScore(points);
             //Spawn and play the particle system
+            var particleSystemGameObj = GameObject.Instantiate(this.particleSystem.gameObject, this.transform.position, this.transform.rotation);
+            var particleSystem = particleSystemGameObj.GetComponent<ParticleSystem>();
+            particleSystem.loop = false;
+            particleSystem.Play();
             //Destroy this
+            GameObject.Destroy(this.gameObject);
         }
 
         private void ShootUpward()

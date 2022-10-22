@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f329c0c1bffe1fe408833371bcc68b30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleSystem: {fileID: 0}
+  particleSystem: {fileID: 2088871590894813759, guid: 745208c9d6e104225bd99e1ab894e3bb, type: 3}
   points: -5
 --- !u!54 &8592591819672850607
 Rigidbody:
