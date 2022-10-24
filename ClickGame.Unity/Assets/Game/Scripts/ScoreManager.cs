@@ -10,6 +10,11 @@ namespace Game
         public ScoreUpdatedEvent OnScoreChanged;
 
         /// <summary>
+        /// A reference to the UI manager in order to transfer the score state between menus
+        /// </summary>
+        private UIManager uiManager;
+
+        /// <summary>
         /// private player score instance
         /// </summary>
         private int score = 0;
@@ -26,9 +31,24 @@ namespace Game
             }
         }
 
+        private void Awake()
+        {
+            this.uiManager = FindObjectOfType<UIManager>();
+            this.uiManager.OnSwitchToGameOver += UpdateGameOverUIScore;
+        }
+
         private void Start()
         {
             this.Score = 0;
+        }
+
+        /// <summary>
+        /// An event to send the score to the Game Over UI
+        /// </summary>
+        /// <param name="manager"></param>
+        public void UpdateGameOverUIScore(GameOverUIManager manager)
+        {
+            manager.Score = this.Score;
         }
 
         /// <summary>
