@@ -38,7 +38,7 @@ namespace Game
 
         private void ChangeToGameOverInputScheme()
         {
-            this.inputScheme = GameInputScheme;
+            this.inputScheme = GameOverInputScheme;
         }
 
         private void GameInputScheme()

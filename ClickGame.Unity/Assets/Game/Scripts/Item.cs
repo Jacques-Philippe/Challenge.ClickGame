@@ -27,6 +27,17 @@ namespace Game
         private const float UPWARD_FORCE_MAX = 14;
         private const float UPWARD_FORCE_MIN = 8;
 
+        /// <summary>
+        /// The boundary beyond which items cannot fall.
+        /// If a good item falls past this boundary, the game is over.
+        /// </summary>
+        private const float LOWER_BOUNDARY = -5.0f;
+
+        /// <summary>
+        /// Whether the item is a "good" or "bad" item. A good item is an item whose score value is positive.
+        /// </summary>
+        /// <remarks>if a good item falls below the boundary, the game is over, but if a bad item falls below the boundary nothing happens.</remarks>
+        [HideInInspector]
         public bool IsGoodItem
         {
             get => points > 0;
@@ -37,7 +48,7 @@ namespace Game
         {
             this.scoreManager = FindObjectOfType<ScoreManager>();
             this.rigidbody = GetComponent<Rigidbody>();
-            this.gameManager= GetComponent<GameManager>();
+            this.gameManager = FindObjectOfType<GameManager>();
         }
 
         private void Start()
@@ -49,9 +60,12 @@ namespace Game
         {
             //Destroy the object when it falls below the horizon
             var currentHeight = this.transform.position.y;
-            if (currentHeight <= -5.0)
+            bool itemIsBelowLowerBoundary = currentHeight <= LOWER_BOUNDARY;
+            
+            //end the game for a good item fallen below the boundary
+            if (itemIsBelowLowerBoundary)
             {
-                if (this.IsGoodItem && !gameManager.IsGameOver)
+                if (!gameManager.IsGameOver && this.IsGoodItem)
                 {
                     gameManager.EndGame();
                 }
