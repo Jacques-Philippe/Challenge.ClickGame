@@ -18,6 +18,16 @@ namespace Game
         /// </summary>
         private GameManager gameManager;
 
+        /// <summary>
+        /// Our reference to the difficulty manager. The difficulty is what determines how fast items spawn.<br />
+        /// <list type="bullet">
+        /// <item>Easy: 1s per enemy spawn</item>
+        /// <item>Medium: .66s per enemy spawn</item>
+        /// <item>Hard: .33s per enemy spawn</item>
+        /// </list>
+        /// </summary>
+        private DifficultyManager difficultyManager;
+
 
         /// <summary>
         /// The delay before the next enemy is spawned
@@ -44,10 +54,14 @@ namespace Game
 
         private bool shouldStopSpawning = false;
 
+
         private void Awake()
         {
             this.gameManager = FindObjectOfType<GameManager>();
+            this.difficultyManager = FindObjectOfType<DifficultyManager>();
+
             this.gameManager.OnGameOver += StopSpawning;
+            this.difficultyManager.OnDifficultyFound += SetSpawnDelayGivenDifficulty;
         }
 
         private void Start()
@@ -83,6 +97,31 @@ namespace Game
             gameobj.transform.LookAt(cameraPosition);
         }
 
-
+        private void SetSpawnDelayGivenDifficulty(DifficultyManager.DIFFICULTY difficulty)
+        {
+            switch (difficulty)
+            {
+                case DifficultyManager.DIFFICULTY.EASY:
+                    {
+                        this.spawnDelay = 1.0f;
+                        break;
+                    }
+                case DifficultyManager.DIFFICULTY.MEDIUM:
+                    {
+                        this.spawnDelay = 0.66f;
+                        break;
+                    }
+                case DifficultyManager.DIFFICULTY.HARD:
+                    {
+                        this.spawnDelay = 0.33f;
+                        break;
+                    }
+                default:
+                    {
+                        throw new System.Exception("Bad difficulty value received for SetSpawnDelayGivenDifficulty");
+                    }
+            }
+            Debug.Log($"Started game with difficulty {difficulty}; spawn delay: {this.spawnDelay}s");
+        }
     }
 }
