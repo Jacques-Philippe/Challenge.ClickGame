@@ -59,8 +59,8 @@ namespace Game
         private void Update()
         {
             //Destroy the object when it falls below the horizon
-            var currentHeight = this.transform.position.y;
-            bool itemIsBelowLowerBoundary = currentHeight <= LOWER_BOUNDARY;
+            var currentItemHeight = this.transform.position.y;
+            bool itemIsBelowLowerBoundary = currentItemHeight <= LOWER_BOUNDARY;
             
             //end the game for a good item fallen below the boundary
             if (itemIsBelowLowerBoundary)
@@ -75,17 +75,18 @@ namespace Game
 
         private void OnMouseDown()
         {
-            //Debug.Log("OnMouseDown");
             this.scoreManager.AddToScore(points);
-            //Spawn and play the particle system
+            //Spawn and play the particle system at the current item option, creating the illusion that the item explodes
             var particleSystemGameObj = GameObject.Instantiate(this.particleSystem.gameObject, this.transform.position, this.transform.rotation);
             var particleSystem = particleSystemGameObj.GetComponent<ParticleSystem>();
-            particleSystem.loop = false;
             particleSystem.Play();
-            //Destroy this
+            //Destroy the item
             GameObject.Destroy(this.gameObject);
         }
 
+        /// <summary>
+        /// A helper function to shoot the item upwards in a parabolic motion on spawn
+        /// </summary>
         private void ShootUpward()
         {
             float upwardForce = Random.Range(UPWARD_FORCE_MIN, UPWARD_FORCE_MAX);

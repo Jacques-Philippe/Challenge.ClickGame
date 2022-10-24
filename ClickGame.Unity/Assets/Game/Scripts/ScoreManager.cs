@@ -9,10 +9,13 @@ namespace Game
         public delegate void ScoreUpdatedEvent(int newValue);
         public ScoreUpdatedEvent OnScoreChanged;
 
+        /// <summary>
+        /// private player score instance
+        /// </summary>
         private int score = 0;
 
         /// <summary>
-        /// Player score
+        /// Public facing player score
         /// </summary>
         public int Score
         {
@@ -32,6 +35,7 @@ namespace Game
         /// Public facing score manipulation function to apply item click to score, affecting UI.
         /// </summary>
         /// <param name="points"></param>
+        /// <remarks>score can be negative</remarks>
         public void AddToScore(int points)
         {
             this.Score += points;
