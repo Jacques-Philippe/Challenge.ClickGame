@@ -43,12 +43,12 @@ namespace Game
 
         private void GameInputScheme()
         {
-            Debug.Log("Game input scheme");
+            //Debug.Log("Game input scheme");
         }
 
         private void GameOverInputScheme()
         {
-            Debug.Log("Game over input scheme");
+            //Debug.Log("Game over input scheme");
         }
 
     }
