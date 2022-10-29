@@ -613,10 +613,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundManager
       objectReference: {fileID: 0}
-    - target: {fileID: 111553659993863177, guid: 6fa69f01f925a244bac847aa138d3a1a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 111553659993863183, guid: 6fa69f01f925a244bac847aa138d3a1a, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -841,14 +837,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3067383746007558482, guid: 3da0155b258f92e449765a2a653ab03c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5339542698054325667, guid: 3da0155b258f92e449765a2a653ab03c, type: 3}
-      propertyPath: scoreText
-      value: 
-      objectReference: {fileID: 8984189933057268983}
     - target: {fileID: 8984189932781228142, guid: 3da0155b258f92e449765a2a653ab03c, type: 3}
       propertyPath: m_Name
       value: UIManager
@@ -899,14 +887,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3da0155b258f92e449765a2a653ab03c, type: 3}
---- !u!114 &8984189933057268983 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2819754660407190085, guid: 3da0155b258f92e449765a2a653ab03c, type: 3}
-  m_PrefabInstance: {fileID: 8984189933057268982}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

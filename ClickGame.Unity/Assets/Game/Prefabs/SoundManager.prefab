@@ -141,5 +141,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25e140fe20fb2c544852de54f86bafe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameMusic: {fileID: 0}
-  gameOverMusic: {fileID: 0}
+  gameMusic: {fileID: 8300000, guid: bf89fe51a53dd694488e9a23eb778b94, type: 3}
+  gameOverMusic: {fileID: 8300000, guid: 97bcfd58e2a0e884eb52cd432c47e2a4, type: 3}
