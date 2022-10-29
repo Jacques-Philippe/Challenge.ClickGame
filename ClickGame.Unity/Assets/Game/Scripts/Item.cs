@@ -75,13 +75,16 @@ namespace Game
 
         private void OnMouseDown()
         {
-            this.scoreManager.AddToScore(points);
-            //Spawn and play the particle system at the current item option, creating the illusion that the item explodes
-            var particleSystemGameObj = GameObject.Instantiate(this.particleSystem.gameObject, this.transform.position, this.transform.rotation);
-            var particleSystem = particleSystemGameObj.GetComponent<ParticleSystem>();
-            particleSystem.Play();
-            //Destroy the item
-            GameObject.Destroy(this.gameObject);
+            if (!this.gameManager.IsGameOver)
+            {
+                this.scoreManager.AddToScore(points);
+                //Spawn and play the particle system at the current item option, creating the illusion that the item explodes
+                var particleSystemGameObj = GameObject.Instantiate(this.particleSystem.gameObject, this.transform.position, this.transform.rotation);
+                var particleSystem = particleSystemGameObj.GetComponent<ParticleSystem>();
+                particleSystem.Play();
+                //Destroy the item
+                GameObject.Destroy(this.gameObject);
+            }
         }
 
         /// <summary>
