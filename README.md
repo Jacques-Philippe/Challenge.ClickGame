@@ -33,3 +33,7 @@ The game is over for a `good` item not clicked by the player. On game over, the 
 ## Figma (planning)
 
 [Here](https://www.figma.com/file/5rNdEejC3g8weiB6F5Wr51/ClickGame?node-id=0%3A1)
+
+## Hosted project
+
+[Here](https://play.unity.com/mg/other/webgl-builds-264815)
