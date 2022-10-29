@@ -19,9 +19,18 @@ namespace Game
         {
             this.FindDifficulty();
 
+            
+        }
+
+        private void Start()
+        {
             if (this.currentDifficulty != null)
             {
                 this.OnDifficultyFound.Invoke((DIFFICULTY)this.currentDifficulty);
+            }
+            else
+            {
+                this.OnDifficultyFound.Invoke(DIFFICULTY.EASY);
             }
         }
 
